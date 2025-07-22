@@ -1,10 +1,10 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-SQLALCHEMY_DATABASE_URL = "postgresql://aidar:1@localhost:5432/mydatabase"
+SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://aidar:1@localhost:5432/mydatabase"
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo=True)
+
+SessionLocal = sessionmaker(bind=engine,class_=AsyncSession,expire_on_commit=False,autoflush=False)
 
 Base = declarative_base()
