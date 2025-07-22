@@ -33,7 +33,7 @@ async def get_users(db: AsyncSession = Depends(get_db)):
 
 @app.post("/user")
 async def add_user(user:User, db: AsyncSession = Depends(get_db)):
-    model = models.Users(**user.dict())
+    model = models.Users(**user.model_dump())
     db.add(model)
     await db.commit()
 
