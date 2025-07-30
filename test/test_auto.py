@@ -1,7 +1,6 @@
 import pytest
 
 
-
 @pytest.mark.asyncio
 async def test_post(client):
     payload = {
@@ -20,8 +19,9 @@ async def test_get(client):
     response = await client.get("/")
     assert response.status_code == 200
 
+
 @pytest.mark.asyncio
-async def test_put(client, user_id = 7):
+async def test_put(client, user_id = 32):
     payload = {
   "name": "stringstring",
   "lastname": "string",
@@ -33,6 +33,6 @@ async def test_put(client, user_id = 7):
 
 
 @pytest.mark.asyncio
-async def test_delete(client, user_id=27):
+async def test_delete(client, user_id=33):
     response = await client.delete(f"/{user_id}")
     assert response.status_code == 200

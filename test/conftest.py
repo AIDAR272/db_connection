@@ -33,11 +33,7 @@ async def prepare_test_engine():
 @pytest_asyncio.fixture(scope="function")
 async def db_session() -> AsyncGenerator[AsyncSession]:
     async with test_session_local() as session:
-        await session.begin()
-        try:
-            yield session
-        finally:
-            await session.rollback()
+        yield session
 
 
 @pytest_asyncio.fixture(scope="function")
