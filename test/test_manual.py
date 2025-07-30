@@ -20,17 +20,17 @@ def test_post():
     assert response.status_code == 200
 
 
-def test_put():
+def test_put(user_id: int):
     payload = {
   "name": "string",
   "lastname": "string",
   "age": 0,
   "email": "string"
 }
-    response = requests.put(ENDPOINT + "/27", json=payload)
+    response = requests.put(ENDPOINT + f"/{user_id}", json=payload)
     assert response.status_code == 200
 
 
-def test_delete():
-    response = requests.delete(ENDPOINT + "/4")
+def test_delete(user_id: int):
+    response = requests.delete(ENDPOINT + f"/{user_id}")
     assert response.status_code == 200

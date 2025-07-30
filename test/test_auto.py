@@ -21,7 +21,7 @@ async def test_get(client):
 
 
 @pytest.mark.asyncio
-async def test_put(client, user_id = 32):
+async def test_put(client, user_id: int):
     payload = {
   "name": "stringstring",
   "lastname": "string",
@@ -33,6 +33,6 @@ async def test_put(client, user_id = 32):
 
 
 @pytest.mark.asyncio
-async def test_delete(client, user_id=33):
+async def test_delete(client, user_id: int):
     response = await client.delete(f"/{user_id}")
     assert response.status_code == 200
